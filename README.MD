@@ -80,5 +80,5 @@ automatically at the container startup, so: if you add a new class model than yo
 
 Now the server is up and running, you can test the application in your browser at this address: `http://127.0.0.1:5000/`. <br> 
 You should see a message with installed Flask version.<br>
-You can test the APIs with the test suite `run_all_tests.py`. <br>
+You can test the APIs by running the test suite `run_all_tests.py`. <br>
 Enjoy!
