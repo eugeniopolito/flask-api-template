@@ -1,0 +1,32 @@
+version: '3.7'
+
+volumes:
+  db_data: {}
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    command: [
+      '--wait_timeout=28800'
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql/data
+
+  web:
+    build: .
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - .env
+    depends_on:
+      - db
