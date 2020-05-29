@@ -47,11 +47,20 @@ docker-compose build
 > As you can see in `docker-compose.yml`, there are two services for the container: one for the Flask App - the  `web` 
 service - and one another for the MariaDB image -  `db` service. <br> 
 
-- To run both the services, just type in your console:
+- To run the services - the first time you need to download the MariaDB image - type in your console:
+
+```
+docker-compose up db
+
+docker-compose up web
+```
+
+next time you can run both services with:
 
 ```
 docker-compose up
 ```
+
 
 ## Project structure 
 
