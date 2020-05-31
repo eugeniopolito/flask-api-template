@@ -47,7 +47,7 @@ docker-compose build
 > As you can see in `docker-compose.yml`, there are two services for the container: one for the Flask App - the  `web` 
 service - and one another for the MariaDB image -  `db` service. <br> 
 
-- To run the services - the first time you need to download the MariaDB image - type in your console:
+- To run the services - the first time you need to download the *MariaDB* image - type in your console:
 
 ```
 docker-compose up db
@@ -72,8 +72,8 @@ docker-compose up
 - `lookup_tables` contains useful lookup tables. The `messages.py` contains the message codes sent by the APIs to the client.
 - `migrations` contains the `Flask-Migrate` and `Alembic` scripts and files for Database auto migrations 
 
-> All migrations are run by the `start.sh`
-automatically at the container startup, so: if you add a new class model than you need to restart the server in order to run migrations 
+> All migrations will be run by the `start.sh`
+automatically, at the container startup. Therefore if you add a new model class than you need to restart the server in order to run migrations 
 
 
 ## Test APIs 
