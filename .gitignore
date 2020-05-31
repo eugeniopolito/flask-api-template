@@ -129,6 +129,7 @@ Thumbs.db
 data.db
 
 # PyCharm
+.idea
 .idea/**/workspace.xml
 
 
