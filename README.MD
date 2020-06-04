@@ -1,6 +1,6 @@
 # Docker multi container for Python Flask APIs development
 
-https://travis-ci.org/eugeniopolito/flask-api-template.svg?branch=master
+[![Build Status](https://travis-ci.org/eugeniopolito/flask-api-template.svg?branch=master)](https://travis-ci.org/eugeniopolito/flask-api-template.svg?branch=master)
 
 This Docker multi container can ease the process of configuring a Flask App from scratch. <br>
 It includes everything you need to start developing your Flask APIs:
