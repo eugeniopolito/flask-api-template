@@ -6,3 +6,6 @@ python:
 install:
   - 'pip install pipenv'
   - 'pipenv install'
+
+script:
+  - python run_all_tests.py
