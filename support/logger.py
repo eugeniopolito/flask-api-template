@@ -13,6 +13,9 @@ import logging
 
 
 class log(object):
+    """
+    A useful logger decorator.
+    """
 
     def __init__(self, logger=None):
         self.logger = logger

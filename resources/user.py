@@ -1,5 +1,5 @@
 """
-User Resourse definition for Flask-RESTful
+User Resources definitions for Flask-RESTful
 """
 
 import bcrypt
@@ -18,15 +18,17 @@ from lookup_tables.messages import MessageCode
 from models.blacklist import BlacklistToken
 from models.user import UserModel
 from schemas.user import UserSchema
-from support.logger import log
 
 user_schema = UserSchema()
 
 
 class UserRegister(Resource):
     @classmethod
-    @log()
     def post(cls):
+        """
+        Registers a new user with the given username and password.
+        :return: a message with a code for the registration status
+        """
         user_json = request.get_json()
         user = user_schema.load(user_json, partial=("registration_date",))
 
@@ -41,8 +43,11 @@ class UserRegister(Resource):
 class UserLogin(Resource):
 
     @classmethod
-    @log()
     def post(cls):
+        """
+        Performs a login for the incoming username and password.
+        :return: a message with a code for the login status
+        """
         user_json = request.get_json()
         user_data = user_schema.load(user_json, partial=("name", "surname"))
 
@@ -57,9 +62,13 @@ class UserLogin(Resource):
 
 
 class UserLogout(Resource):
+
     @jwt_required
-    @log()
     def post(self):
+        """
+        Performs a logout for the incoming JWT token.
+        :return: a message with a code for the logout status
+        """
         jti = get_raw_jwt()['jti']
         blacklist_token = BlacklistToken(token=jti)
         blacklist_token.save_to_db()
@@ -67,9 +76,13 @@ class UserLogout(Resource):
 
 
 class TokenRefresh(Resource):
+
     @jwt_refresh_token_required
-    @log()
     def post(self):
+        """
+        Creates a new access token for the incoming JWT refresh token.
+        :return: a new access token
+        """
         current_user = get_jwt_identity()
         new_token = create_access_token(identity=current_user, fresh=False)
         return {'access_token': new_token}, 200

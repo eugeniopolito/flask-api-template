@@ -10,6 +10,9 @@ from support.logger import log
 
 
 class UserModel(db.Model):
+    """
+    The User class model.
+    """
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -21,14 +24,28 @@ class UserModel(db.Model):
 
     @classmethod
     def find_by_id(cls, _id: int) -> "User":
+        """
+        Find a User by id.
+        :param _id: the user id to search for
+        :return: a User object
+        """
         return cls.query.filter_by(id=_id).first()
 
     @classmethod
     def find_by_email(cls, email: str) -> "User":
+        """
+        Find a user by email.
+        :param email: the user email to search for
+        :return: a User object
+        """
         return cls.query.filter_by(email=email).first()
 
     @log()
     def save_to_db(self) -> None:
+        """
+        Save a User into database. The password is encrypted with bcrypt.
+        :return: None
+        """
         db.session.add(self)
         self.password = bcrypt.hashpw(self.password.encode('utf8'), bcrypt.gensalt())
         self.password = self.password.decode("utf-8", "ignore")
@@ -37,11 +54,19 @@ class UserModel(db.Model):
 
     @log()
     def update(self) -> None:
+        """
+        Update a user.
+        :return: None
+        """
         db.session.add(self)
         db.session.commit()
 
     @log()
     def delete_from_db(self) -> None:
+        """
+        Delete a user.
+        :return: None
+        """
         db.session.delete(self)
         db.session.commit()
 
