@@ -1,5 +1,5 @@
 """"
-System Tests: be sure to start the Docker container before you run these APIs tests
+System Tests: no need to start the Docker container
 """
 
 import json
