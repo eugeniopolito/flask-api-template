@@ -5,7 +5,8 @@ python:
 
 install:
   - 'pip install pipenv'
+  - 'pip install pytest'
   - 'pipenv install'
 
-script:
-  - python run_all_tests.py
+
+script: python -m pytest tests/

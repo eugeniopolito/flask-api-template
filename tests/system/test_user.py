@@ -14,7 +14,7 @@ class UserTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 register_response = c.post(
-                    "/v1/register",
+                    f"{self.api_version}/register",
                     json={
                         "email": "john.doe@email.com",
                         "name": "John",
@@ -30,7 +30,7 @@ class UserTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 register_response = c.post(
-                    "/v1/register",
+                    f"{self.api_version}/register",
                     json={
                         "email": "john.doe@email.com",
                         "name": "John",
@@ -40,7 +40,7 @@ class UserTest(BaseTest):
                 )
                 self.assertEqual(register_response.status_code, 201)
                 login_response = c.post(
-                    "/v1/login",
+                    f"{self.api_version}/login",
                     json={"email": "john.doe@email.com", "password": "password"},
                     headers={"Content-Type": "application/json"},
                 )
@@ -52,7 +52,7 @@ class UserTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 register_response = c.post(
-                    "/v1/register",
+                    f"{self.api_version}/register",
                     json={
                         "email": "john.doe@email.com",
                         "name": "John",
@@ -62,7 +62,7 @@ class UserTest(BaseTest):
                 )
                 self.assertEqual(register_response.status_code, 201)
                 login_response = c.post(
-                    "/v1/login",
+                    f"{self.api_version}/login",
                     json={"email": "john.doe@email.com", "password": "wrong-password"},
                     headers={"Content-Type": "application/json"},
                 )
@@ -76,7 +76,7 @@ class UserTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 c.post(
-                    "/v1/register",
+                    f"{self.api_version}/register",
                     json={
                         "email": "john.doe@email.com",
                         "name": "John",
@@ -85,7 +85,7 @@ class UserTest(BaseTest):
                     },
                 )
                 register_response = c.post(
-                    "/v1/register",
+                    f"{self.api_version}/register",
                     json={
                         "email": "john.doe@email.com",
                         "name": "John",
@@ -103,7 +103,7 @@ class UserTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 register_response = c.post(
-                    "/v1/register",
+                    f"{self.api_version}/register",
                     json={
                         "email": "john.doe@email.com",
                         "name": "John",
@@ -113,7 +113,7 @@ class UserTest(BaseTest):
                 )
                 self.assertEqual(register_response.status_code, 201)
                 login_response = c.post(
-                    "/v1/login",
+                    f"{self.api_version}/login",
                     json={"email": "john.doe@email.com", "password": "password"},
                     headers={"Content-Type": "application/json"},
                 )
@@ -123,7 +123,8 @@ class UserTest(BaseTest):
                 self.assertIsNotNone(access_token)
                 self.assertIsNotNone(refresh_token)
                 refresh_response = c.post(
-                    "/v1/refresh", headers={"Authorization": "Bearer " + refresh_token}
+                    f"{self.api_version}/refresh",
+                    headers={"Authorization": f"Bearer {refresh_token}"},
                 )
                 self.assertEqual(refresh_response.status_code, 200)
                 self.assertIn("access_token", json.loads(refresh_response.data).keys())
@@ -132,7 +133,7 @@ class UserTest(BaseTest):
         with self.app() as c:
             with self.app_context():
                 register_response = c.post(
-                    "/v1/register",
+                    f"{self.api_version}/register",
                     json={
                         "email": "john.doe@email.com",
                         "name": "John",
@@ -142,7 +143,7 @@ class UserTest(BaseTest):
                 )
                 self.assertEqual(register_response.status_code, 201)
                 login_response = c.post(
-                    "/v1/login",
+                    f"{self.api_version}/login",
                     json={"email": "john.doe@email.com", "password": "password"},
                     headers={"Content-Type": "application/json"},
                 )
@@ -152,7 +153,8 @@ class UserTest(BaseTest):
                 self.assertIsNotNone(access_token)
                 self.assertIsNotNone(refresh_token)
                 logout_response = c.post(
-                    "/v1/logout", headers={"Authorization": "Bearer " + access_token}
+                    f"{self.api_version}/logout",
+                    headers={"Authorization": f"Bearer {access_token}"},
                 )
                 self.assertEqual(logout_response.status_code, 200)
                 self.assertEqual(

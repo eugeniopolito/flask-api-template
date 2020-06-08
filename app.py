@@ -6,17 +6,15 @@ from flask_migrate import Migrate
 from flask_restful import Api
 from marshmallow import ValidationError
 
+from lookup_tables.api_versions import APIVersion
 from lookup_tables.messages import MessageCode
 from models.blacklist import BlacklistToken
 from resources.user import UserRegister, UserLogin, TokenRefresh, UserLogout
 from support.db import db
 
-API_VERSION_V1 = "/v1"
-
 app = Flask(__name__)
 load_dotenv(".env", verbose=True)
 app.config.from_object("default_config")  # load default configs from default_config.py
-
 
 api = Api(app)
 migrate = Migrate(app, db)
@@ -102,7 +100,7 @@ def home():
     return render_template("info.jinja2", flask_version=__version__), 200
 
 
-api.add_resource(UserRegister, API_VERSION_V1 + "/register")
-api.add_resource(UserLogin, API_VERSION_V1 + "/login")
-api.add_resource(UserLogout, API_VERSION_V1 + "/logout")
-api.add_resource(TokenRefresh, API_VERSION_V1 + "/refresh")
+api.add_resource(UserRegister, f"{APIVersion.V1}/register")
+api.add_resource(UserLogin, f"{APIVersion.V1}/login")
+api.add_resource(UserLogout, f"{APIVersion.V1}/logout")
+api.add_resource(TokenRefresh, f"{APIVersion.V1}/refresh")
