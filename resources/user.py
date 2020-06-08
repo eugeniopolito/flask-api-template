@@ -10,7 +10,7 @@ from flask_jwt_extended import (
     jwt_refresh_token_required,
     get_jwt_identity,
     jwt_required,
-    get_raw_jwt
+    get_raw_jwt,
 )
 from flask_restful import Resource
 
@@ -41,7 +41,6 @@ class UserRegister(Resource):
 
 
 class UserLogin(Resource):
-
     @classmethod
     def post(cls):
         """
@@ -53,7 +52,9 @@ class UserLogin(Resource):
 
         user = UserModel.find_by_email(user_data.email)
 
-        if user and bcrypt.checkpw(user_data.password.encode('utf8'), user.password.encode('utf8')):
+        if user and bcrypt.checkpw(
+            user_data.password.encode("utf8"), user.password.encode("utf8")
+        ):
             access_token = create_access_token(identity=user.id, fresh=True)
             refresh_token = create_refresh_token(user.id)
             return {"access_token": access_token, "refresh_token": refresh_token}, 200
@@ -62,21 +63,19 @@ class UserLogin(Resource):
 
 
 class UserLogout(Resource):
-
     @jwt_required
     def post(self):
         """
         Performs a logout for the incoming JWT token.
         :return: a message with a code for the logout status
         """
-        jti = get_raw_jwt()['jti']
+        jti = get_raw_jwt()["jti"]
         blacklist_token = BlacklistToken(token=jti)
         blacklist_token.save_to_db()
         return {"message": MessageCode.USER_LOGGED_OUT}, 200
 
 
 class TokenRefresh(Resource):
-
     @jwt_refresh_token_required
     def post(self):
         """
@@ -85,4 +84,4 @@ class TokenRefresh(Resource):
         """
         current_user = get_jwt_identity()
         new_token = create_access_token(identity=current_user, fresh=False)
-        return {'access_token': new_token}, 200
+        return {"access_token": new_token}, 200

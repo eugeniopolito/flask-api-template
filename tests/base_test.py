@@ -8,7 +8,6 @@ from support.db import db
 
 
 class BaseTest(TestCase):
-
     @classmethod
     def setUpClass(cls):
         with app.app_context():

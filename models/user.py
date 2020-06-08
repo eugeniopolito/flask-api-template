@@ -13,6 +13,7 @@ class UserModel(db.Model):
     """
     The User class model.
     """
+
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -47,7 +48,7 @@ class UserModel(db.Model):
         :return: None
         """
         db.session.add(self)
-        self.password = bcrypt.hashpw(self.password.encode('utf8'), bcrypt.gensalt())
+        self.password = bcrypt.hashpw(self.password.encode("utf8"), bcrypt.gensalt())
         self.password = self.password.decode("utf-8", "ignore")
         self.registration_date = int(round(time.time()))
         db.session.commit()
@@ -71,8 +72,10 @@ class UserModel(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return f"<{self.__class__.__name__}(" \
-               f"name: {self.name}, " \
-               f"surname: {self.surname}, " \
-               f"email: {self.email}" \
-               f")>"
+        return (
+            f"<{self.__class__.__name__}("
+            f"name: {self.name}, "
+            f"surname: {self.surname}, "
+            f"email: {self.email}"
+            f")>"
+        )

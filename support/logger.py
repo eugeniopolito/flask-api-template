@@ -22,8 +22,11 @@ class log(object):
 
     def __call__(self, func):
         if not self.logger:
-            logging.basicConfig(format='%(levelname)s [%(asctime)s]: %(message)s ', level=logging.INFO,
-                                datefmt='%d/%m/%Y %H:%M:%S')
+            logging.basicConfig(
+                format="%(levelname)s [%(asctime)s]: %(message)s ",
+                level=logging.INFO,
+                datefmt="%d/%m/%Y %H:%M:%S",
+            )
             self.logger = logging.getLogger(func.__module__)
             self.logger.level = logging.INFO
 

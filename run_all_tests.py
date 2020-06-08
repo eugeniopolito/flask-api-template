@@ -7,7 +7,7 @@ Note: all tests use an in-memory SQLite DB server so they can be easily reproduc
 import unittest
 
 loader = unittest.TestLoader()
-start_dir = 'tests'
+start_dir = "tests"
 suite = loader.discover(start_dir)
 
 runner = unittest.TextTestRunner()

@@ -39,7 +39,7 @@ JWT Extendend tokens related handlers.
 
 @jwt.user_claims_loader
 def add_claims_to_jwt(identity):
-    return {'identity': identity}
+    return {"identity": identity}
 
 
 @jwt.expired_token_loader
@@ -104,5 +104,5 @@ def home():
 
 api.add_resource(UserRegister, API_VERSION_V1 + "/register")
 api.add_resource(UserLogin, API_VERSION_V1 + "/login")
-api.add_resource(UserLogout, API_VERSION_V1 + '/logout')
-api.add_resource(TokenRefresh, API_VERSION_V1 + '/refresh')
+api.add_resource(UserLogout, API_VERSION_V1 + "/logout")
+api.add_resource(TokenRefresh, API_VERSION_V1 + "/refresh")

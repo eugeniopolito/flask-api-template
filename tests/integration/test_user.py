@@ -6,23 +6,26 @@ from tests.base_test import BaseTest
 
 
 class UserTest(BaseTest):
-
     def test_create_user(self):
         with self.app_context():
-            user = UserModel(email="john.doe@email.com",
-                             name="John",
-                             surname="Doe",
-                             password="password")
+            user = UserModel(
+                email="john.doe@email.com",
+                name="John",
+                surname="Doe",
+                password="password",
+            )
 
             user.save_to_db()
             self.assertIsNotNone(UserModel.find_by_email("john.doe@email.com"))
 
     def test_delete_user(self):
         with self.app_context():
-            user = UserModel(email="john.doe@email.com",
-                             name="John",
-                             surname="Doe",
-                             password="password")
+            user = UserModel(
+                email="john.doe@email.com",
+                name="John",
+                surname="Doe",
+                password="password",
+            )
 
             user.save_to_db()
             self.assertIsNotNone(user)
@@ -32,10 +35,12 @@ class UserTest(BaseTest):
 
     def test_update_user(self):
         with self.app_context():
-            user = UserModel(email="john.doe@email.com",
-                             name="John",
-                             surname="Doe",
-                             password="password")
+            user = UserModel(
+                email="john.doe@email.com",
+                name="John",
+                surname="Doe",
+                password="password",
+            )
 
             user.save_to_db()
             self.assertIsNotNone(user)

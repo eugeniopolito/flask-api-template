@@ -10,6 +10,7 @@ class BlacklistToken(db.Model):
     The BlacklistToken class model.
     This class is used for logging out user by token blacklisting.
     """
+
     __tablename__ = "blacklist_tokens"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -52,6 +53,4 @@ class BlacklistToken(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return f"<{self.__class__.__name__}(" \
-               f"token: {self.token}" \
-               f")>"
+        return f"<{self.__class__.__name__}(" f"token: {self.token}" f")>"
