@@ -26,14 +26,6 @@ There are four APIs built for you, so you immediately can manage users registrat
 - /v1/logout
 - /v1/refresh
 
-## Credits
-
-This project is based on the code from this repository:
-
-https://github.com/tecladocode/rest-api-sections
-
-which is a companion code of a great Flask course (more info here: https://blog.tecladocode.com).
-
 ## Requirements
 
 The only requirement to execute the image is a working <b>Docker engine</b>
