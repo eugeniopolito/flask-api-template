@@ -31,7 +31,7 @@ def create_tables():
 
 
 """
-JWT Extendend tokens related handlers.
+JWT Extendend tokens related handlers (library updated to v.4)
 """
 
 
