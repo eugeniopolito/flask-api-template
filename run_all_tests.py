@@ -2,6 +2,10 @@
 Run all tests (integration and system tests).
 
 Note: all tests use an in-memory SQLite DB server so they can be easily reproduced and no data will be saved on real DB.
+
+Run:
+
+python run_all_tests.py
 """
 
 import unittest
