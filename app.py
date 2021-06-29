@@ -35,7 +35,7 @@ JWT Extendend tokens related handlers.
 """
 
 
-@jwt.user_claims_loader
+@jwt.additional_claims_loader
 def add_claims_to_jwt(identity):
     return {"identity": identity}
 
@@ -65,9 +65,10 @@ def revoked_token_callback():
     return jsonify({"message": MessageCode.TOKEN_REVOKED}), 401
 
 
-@jwt.token_in_blacklist_loader
-def check_if_token_in_blacklist(decrypted_token):
-    return BlacklistToken.find_by_token(decrypted_token["jti"])
+@jwt.token_in_blocklist_loader
+def check_if_token_in_blacklist(jwt_header, jwt_payload):
+    decrypted_token = jwt_payload["jti"]
+    return BlacklistToken.find_by_token(decrypted_token) is not None
 
 
 """
