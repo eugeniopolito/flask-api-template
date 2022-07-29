@@ -9,4 +9,3 @@ install:
   - 'pipenv install'
 
 
-script: python -m pytest tests/
