@@ -17,7 +17,7 @@ marshmallow-sqlalchemy = "*"
 marshmallow = "*"
 bcrypt = "*"
 mysql-connector = "*"
-
+zeep = "*"
 
 [requires]
 python_version = "3.7"
