@@ -5,7 +5,7 @@ python:
 
 install:
   - 'pip install pipenv'
-  - 'pip install pytest'
+  - 'pip install -U importlib_metadata'
   - 'pipenv install'
 
 
