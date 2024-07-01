@@ -4,4 +4,4 @@ Define the API versions.
 
 
 class APIVersion:
-    V1 = "/v1"
+    V1 = "/api/v1"

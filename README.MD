@@ -21,10 +21,10 @@ It includes everything you need to start developing your Flask APIs:
 
 There are four APIs built for you, so you immediately can manage users registration, login, logout and refresh the JWT token without writing any code:
 
-- /v1/register
-- /v1/login
-- /v1/logout
-- /v1/refresh
+- /api/v1/register
+- /api/v1/login
+- /api/v1/logout
+- /api/v1/refresh
 
 ## Requirements
 
