@@ -24,7 +24,7 @@ class UserModel(db.Model):
     registration_date = db.Column(db.BigInteger, nullable=False)
 
     @classmethod
-    def find_by_id(cls, _id: int) -> "User":
+    def find_by_id(cls, _id: int) -> "UserModel":
         """
         Find a User by id.
         :param _id: the user id to search for
@@ -33,7 +33,7 @@ class UserModel(db.Model):
         return cls.query.filter_by(id=_id).first()
 
     @classmethod
-    def find_by_email(cls, email: str) -> "User":
+    def find_by_email(cls, email: str) -> "UserModel":
         """
         Find a user by email.
         :param email: the user email to search for
