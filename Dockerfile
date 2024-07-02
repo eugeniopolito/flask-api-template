@@ -12,7 +12,7 @@ RUN pip install pipenv
 RUN pipenv install
 
 COPY Pipfile* /usr/src/app/
-RUN cd /usr/src/app/ && pipenv lock --requirements > requirements.txt
+RUN cd /usr/src/app/ && pipenv requirements > requirements.txt
 RUN pip install --upgrade pip --no-cache-dir -r /usr/src/app/requirements.txt
 
 COPY . /usr/src/app/
